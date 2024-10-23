@@ -33,7 +33,11 @@ const PetSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    descriptionImages:[{},{},{}],
+    descriptionImages:[{}],
+    ownerEmail:{
+        type: String,
+        trim: true,
+    }
 })
 
 module.exports = mongoose.model('PetInfo', PetSchema);
