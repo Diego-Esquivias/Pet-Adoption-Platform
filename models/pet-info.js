@@ -38,6 +38,7 @@ const PetSchema = new mongoose.Schema({
         type: String,
         trim: true,
     }
+    
 })
 
 module.exports = mongoose.model('PetInfo', PetSchema);
