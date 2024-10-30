@@ -39,6 +39,6 @@ const PetSchema = new mongoose.Schema({
         trim: true,
     }
     
-})
+}, {collection: 'pets'})
 
-module.exports = mongoose.model('PetInfo', PetSchema);
+module.exports = mongoose.model('Pet', PetSchema);
