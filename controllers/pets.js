@@ -1,5 +1,7 @@
-const PetInfo = require('../models/PetInfo');
+const PetInfo = require('../models/Pet');
 const asyncWrapper = require('../middleware/async');
+const Pet = ('../models/PetInfo')
+const User = ('../models/User')
 
 const getAllPets = asyncWrapper(async (req, res) => {
     const pets = await PetInfo.find({});
@@ -38,10 +40,16 @@ const updatePet = asyncWrapper(async (req, res) => {
     res.status(200).json({pet});
 })
 
+const getAllUsers = asyncWrapper(async (req, res) => {
+    const users = await User.find({});
+    return res.status(200).json({users});
+})
+
 module.exports = {
     getAllPets,
     createPet,
     getPetProfile,
     deletePet,
-    updatePet
+    updatePet,
+    getAllUsers,
 }
