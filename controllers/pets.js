@@ -1,6 +1,5 @@
 const PetInfo = require('../models/Pet');
 const asyncWrapper = require('../middleware/async');
-const Pet = ('../models/PetInfo')
 const User = ('../models/User')
 
 const getAllPets = asyncWrapper(async (req, res) => {
@@ -19,7 +18,7 @@ const getPetProfile = asyncWrapper(async (req, res) => {
     if(!pet){
         return res.status(404).json({msg: `No pet with id: ${petID}`});
     }
-    res.status(200).json({pet});
+    res.render('profile', {pet});
 })
 
 const deletePet = asyncWrapper(async (req, res) => {
@@ -28,7 +27,7 @@ const deletePet = asyncWrapper(async (req, res) => {
     if(!pet){
         return res.status(404).json({msg: `No pet with id: ${petID}`});
     }
-    res.status(200).json({msg: `Pet with id: ${petID} deleted`});
+    res.render('admin',{msg: `Pet with id: ${petID} deleted`});
 })
 
 const updatePet = asyncWrapper(async (req, res) => {
