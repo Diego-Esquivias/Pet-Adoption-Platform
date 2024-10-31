@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Routes
 app.use('/', require('./routes/pets'));
-app.use('/admin', pets);
+
 
 // Local Middleware
 const notFound = require('./middleware/not-found');
