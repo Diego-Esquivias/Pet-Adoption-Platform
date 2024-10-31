@@ -1,6 +1,5 @@
 const PetInfo = require('../models/Pet');
 const asyncWrapper = require('../middleware/async');
-const Pet = ('../models/PetInfo')
 const User = ('../models/User')
 
 const getAllPets = asyncWrapper(async (req, res) => {

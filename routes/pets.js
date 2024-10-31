@@ -15,16 +15,12 @@ router.route('/').get((req, res) => {
 
 router.route('/gallery').get((req, res) => {
     let pets = getAllPets;
-    res.render('gallery', { pets: pets }); // Render gallery.ejs and pass pets data
+    res.render('gallery', { pets: pets }); // Render gallery.ejs and pass all pets data
 });
 
 router.route('/pet-profile/:id').get((req, res) => {
     let profile = getPetProfile;
-    res.render('profile', { pet: profile }); // Render petProfile.ejs with pet data
-});
-
-router.route('/login').get((req, res) => {
-    res.render('login'); // Render login.ejs
+    res.render('profile', { pet: profile }); // Render petProfile.ejs with pet profile data
 });
 
 router.route('/adminDashboard').get((req, res) => {
