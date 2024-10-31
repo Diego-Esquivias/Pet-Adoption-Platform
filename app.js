@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const connectDB = require('./db/connect');
 const PORT = process.env.PORT || 5000;
-const pets = require('./routes/pets'); 
-const users = require('./routes/users');
+const petRoutes = require('./routes/pets'); 
+const userRoutes = require('./routes/users');
 
 // Set view engine
 app.set('view engine', 'ejs');
@@ -14,8 +14,8 @@ app.use(express.static('./public'));
 app.use(express.json());
 
 // Routes
-app.use('/', pets);
-app.use('/login', users);
+app.use('/', petRoutes);
+app.use('/login', userRoutes);
 
 
 // Local Middleware
