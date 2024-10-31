@@ -19,12 +19,14 @@ body {
 .login-container {
     background-color: #ffffff;
     padding: 2rem;
+    margin: 4rem;
     box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 20rem;
     text-align: center;
     a {
         color: black;
+        font-size: 0.8rem;
     }
 }
 
@@ -39,12 +41,13 @@ label {
     font-weight: bold;
     color: black;
     text-align: left;
+    font-size: 1rem;
 }
 
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.4rem;
     margin-bottom: 1rem;
     border-radius: 10px;
     font-size: 1rem;
@@ -68,4 +71,43 @@ button {
 
 button:hover {
     background-color: #d88818;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+    width: 80%;
+}
+
+.gallery .items {
+    background-color: rgb(255, 255, 255);
+    box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    flex: 30%;
+    margin: 20px;
+    width: 25%;
+}
+
+.items img {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.gallery hr {
+    border: 2.5px #FF9F1C solid;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.items p {
+    text-align: left;
+}
+
+@media (max-width: 800px) {
+    .items {
+      flex: 40%;
+    }
 }
