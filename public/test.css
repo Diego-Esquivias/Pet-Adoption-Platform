@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Increased width for desktop */
+  margin: auto;
+  padding: 20px;
+  background-color: #e5f7f1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sign-in {
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search, .filter {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns for desktop */
+  gap: 20px;
+}
+
+.pet-card {
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.pet-info {
+  padding: 15px;
+}
+
+.pet-info h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.pet-info p {
+  font-size: 16px;
+  color: #666;
+}
+
+.more {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  nav a, .sign-in {
+    font-size: 14px;
+  }
+
+  .sign-in {
+    padding: 6px 11px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .pet-grid {
+    display: flex; /* Change to flex */
+    flex-direction: column; /* Arrange items in a vertical column */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+  }
+
+  .pet-card {
+    width: 75%; /* Ensure a fixed width for a consistent look */
+    margin: 10px 0; /* Add vertical spacing between cards */
+  }
+
+  .more {
+    font-size: 12px;
+  }
+}
+
+/* Adjustments for medium-sized screens like tablets */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .pet-grid {
+    grid-template-columns: 1fr 1fr; /* Two columns for tablets */
+  }
+}
