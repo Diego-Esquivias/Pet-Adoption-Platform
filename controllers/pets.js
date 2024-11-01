@@ -9,8 +9,8 @@ const getAllPets = asyncWrapper(async (req, res) => {
 
 const createPet = asyncWrapper(async (req, res) => {
     const pet = await PetInfo.create(req.body);
-    res.status(201).json({pet});
-})
+    res.render('add',{msg: `Pet with id: ${petID} created`});
+});
 
 const getPetProfile = asyncWrapper(async (req, res) => {
     const {id: petID} = req.params;
@@ -19,7 +19,7 @@ const getPetProfile = asyncWrapper(async (req, res) => {
         return res.status(404).json({msg: `No pet with id: ${petID}`});
     }
     res.render('profile', {pet});
-})
+});
 
 const deletePet = asyncWrapper(async (req, res) => {
     const {id: petID} = req.params;
@@ -28,7 +28,7 @@ const deletePet = asyncWrapper(async (req, res) => {
         return res.status(404).json({msg: `No pet with id: ${petID}`});
     }
     res.render('admin',{msg: `Pet with id: ${petID} deleted`});
-})
+});
 
 const updatePet = asyncWrapper(async (req, res) => {
     const {id: petID} = req.params;
@@ -36,8 +36,9 @@ const updatePet = asyncWrapper(async (req, res) => {
     if(!pet){
         return res.status(404).json({msg: `No pet with id: ${petID}`});
     }
-    res.status(200).json({pet});
-})
+    res.render('admin', { msg: `Pet with id: ${petID} updated`})
+});
+
 
 const getAllUsers = asyncWrapper(async (req, res) => {
     const users = await User.find({});
