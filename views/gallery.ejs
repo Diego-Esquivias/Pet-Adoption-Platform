@@ -6,10 +6,20 @@
     <title>Gallery</title>
 </head>
 <body>
-    <section class="pets-container">
-        <p class="loading-text">Loading...</p>
-        <div class="pets"></div>
-    </section>
-    <script src="../public/gallery.js"></script>
+    <div class="container">
+        <a href="/addpet" class="add-pet-btn">Add New Pet</a>
+        
+        <div class="pet-grid">
+            <% pets.forEach(pet => { %>
+                <div class="pet-card">
+                    <h3><%= pet.name %></h3>
+                    <p><strong>Breed:</strong> <%= pet.breed %></p>
+                    <p><strong>Age:</strong> <%= pet.age %></p>
+                    <p><strong>Description:</strong> <%= pet.description %></p>
+                    <p><strong>Behavior:</strong> <%= pet.behavior %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
 </body>
 </html>

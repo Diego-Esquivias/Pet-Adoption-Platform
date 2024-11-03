@@ -1,37 +1,32 @@
 const express = require('express');
 const router = express.Router();
 
-const{
+const {
     getAllPets,
     createPet,
     getPetProfile,
     deletePet,
-    getAllUsers,
+    getAdminDashboard
 } = require('../controllers/pets');
 
 router.route('/').get((req, res) => {
-    res.render('homePage'); // Render the home.ejs file
+    res.render('homePage');
 });
 
-router.route('/gallery').get((req, res) => {
-    let pets = getAllPets;
-    res.render('gallery', { pets: pets }); // Render gallery.ejs and pass all pets data
-});
+router.route('/gallery').get(getAllPets);
 
-router.route('/pet-profile/:id').get((req, res) => {
-    let profile = getPetProfile;
-    res.render('profile', { pet: profile }); // Render petProfile.ejs with pet profile data
-});
+router.route('/pet-profile/:id').get(getPetProfile);
 
-router.route('/adminDashboard').get((req, res) => {
-        let pets = getAllPets;
-        let users  = getAllUsers;
-        res.render('admin.ejs', {
-            pets: pets,
-            users: users
-        }); // Render adminDashboard.ejs and pass pets and users data
-    })
+router.route('/adminDashboard')
+    .get(getAdminDashboard)
     .delete(deletePet)
     .post(createPet);
+
+    router.route('/addPet')
+    .get((req, res) => {
+        res.render('addPet');
+    })
+    .post(createPet);
+
 
 module.exports = router;
