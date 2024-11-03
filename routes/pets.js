@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../middleware/upload'); 
 
 const {
     getAllPets,
@@ -9,24 +10,26 @@ const {
     getAdminDashboard
 } = require('../controllers/pets');
 
+// Home page route
 router.route('/').get((req, res) => {
     res.render('homePage');
 });
 
+// Gallery route
 router.route('/gallery').get(getAllPets);
 
+// Pet profile route
 router.route('/pet-profile/:id').get(getPetProfile);
 
+// Admin dashboard routes
 router.route('/adminDashboard')
     .get(getAdminDashboard)
     .delete(deletePet)
-    .post(createPet);
+    .post(upload.single('mainImage'), createPet);
 
-    router.route('/addPet')
-    .get((req, res) => {
-        res.render('addPet');
-    })
-    .post(createPet);
-
+// Add pet routes
+router.route('/addPet')
+    .get((req, res) => res.render('addPet'))
+    .post(upload.single('mainImage'), createPet);  
 
 module.exports = router;

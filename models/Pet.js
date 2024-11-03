@@ -29,7 +29,7 @@ const PetSchema = new mongoose.Schema({
     history:{
 
     },
-    mainTimage:{
+    mainImage:{
         type: String,
         trim: true,
     },
