@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Profile</title>
+    <link rel="stylesheet" href="./pd.css">
+    <title>Pet Adoption</title>
 </head>
 <body>
-    
+    <header>
+        <div class="logo">Logo</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Adopt</a>
+            <button class="sign-in">Sign In</button>
+        </nav>
+    </header>
+    <div class="container">
+        <main>
+            <div class="pet-info">
+                <h2><%= pet.name %></h2>
+                <div class="details">
+                    <p><strong>Breed:</strong> <%= pet.breed %></p>
+                    <p><strong>Age:</strong> <%= pet.age %></p>
+                    <p><strong>Description:</strong> <%= pet.description %></p>
+                    <p><strong>Behavior:</strong> <%= pet.behavior %></p>
+                    <p><strong>History:</strong> <%= pet.history %></p>
+                </div>
+            </div>
+            <div class="pet-image">
+                <img src="<%= pet.image %>" alt="<%= pet.name %>">
+            </div>
+        </main>
+        <section class="contact">
+            <h3>Owner Contacts:</h3>
+            <p><%= pet.ownerEmail %></p>
+            <textarea placeholder="Message:"></textarea>
+            <button>Email</button>
+        </section>
+    </div>
 </body>
 </html>

@@ -4,22 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
+    <link rel="stylesheet" href="./test.css">
 </head>
 <body>
+    <header>
+        <div class="logo">Logo</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Adopt</a>
+            <button class="sign-in">Sign In</button>
+        </nav>
+    </header>
     <div class="container">
-        <a href="/addPet" class="add-pet-btn">Add New Pet</a>
-        
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button class="search">Search</button>
+            <button class="filter">Filter</button>
+        </div>
+
         <div class="pet-grid">
             <% pets.forEach(pet => { %>
-                <div class="pet-card">
-                    <h3><%= pet.name %></h3>
-                    <p><strong>Breed:</strong> <%= pet.breed %></p>
-                    <p><strong>Age:</strong> <%= pet.age %></p>
-                    <p><strong>Description:</strong> <%= pet.description %></p>
-                    <p><strong>Behavior:</strong> <%= pet.behavior %></p>
-                </div>
+                <a href="<%= pet.link %>" class="pet-link">
+                    <div class="pet-card">
+                        <div class="image-container">
+                            <img src="<%= pet.image %>" alt="<%= pet.name %>">
+                        </div>
+                        <div class="pet-info">
+                            <h3><%= pet.name %></h3>
+                            <hr>
+                            <p><%= pet.age %></p>
+                            <p><%= pet.gender %></p>
+                        </div>
+                    </div>
+                </a>
             <% }); %>
         </div>
+
+        <div class="more">There will be more below</div>
     </div>
 </body>
 </html>
