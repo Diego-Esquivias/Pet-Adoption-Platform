@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +13,10 @@ body {
   background-size: cover;
 }
 
+/* Layout */
 .container {
   width: 100%;
-  max-width: 1200px; /* Increased width for desktop */
+  max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
@@ -26,6 +28,11 @@ header {
   padding: 20px;
 }
 
+header a {
+  font-size: larger;
+}
+
+/* Header */
 .logo {
   font-size: 24px;
   font-weight: bold;
@@ -38,6 +45,18 @@ nav a {
   font-weight: bold;
 }
 
+header a {
+  color: black;
+  transition: text-decoration-color 0.3s ease;
+  text-underline-offset: 5px;
+  text-decoration: underline transparent solid 5px;
+}
+
+header a:hover {
+  text-decoration-color: #FF9F1C;
+}
+
+/* Buttons */
 .sign-in {
   background-color: #ffa500;
   color: #fff;
@@ -46,20 +65,11 @@ nav a {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.search-bar {
-  display: flex;
-  justify-content: space-between;
-  margin: 30px 0;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.sign-in:hover {
+  background-color: #ff8c00;
 }
 
 .search, .filter {
@@ -74,10 +84,34 @@ nav a {
   margin-right: 10px;
 }
 
+/* Search Bar */
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Pet Cards */
 .pet-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three columns for desktop */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+
+.pet-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pet-card {
@@ -86,8 +120,20 @@ nav a {
   box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 10px;
+  transition: transform 0.3s ease;
 }
 
+.pet-card:hover {
+  transform: scale(1.05);
+  box-shadow: -10px 10px 15px 7px rgba(0, 0, 0, 0.2);
+}
+
+.pet-link:hover .pet-card {
+  transform: scale(1.05);
+  box-shadow: -10px 10px 15px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Container */
 .image-container {
   display: flex;
   align-items: center;
@@ -103,18 +149,25 @@ nav a {
   object-fit: cover;
 }
 
+/* Pet Info */
 .pet-info {
-  padding: 15px;
+  text-align: left;
+  padding: 15px 0;
 }
 
 .pet-info h3 {
   font-size: 20px;
-  margin-bottom: 5px;
 }
 
 .pet-info p {
   font-size: 16px;
   color: #666;
+}
+
+.pet-info hr {
+  border: 2px solid #FF9F1C;
+  margin: 5px 0;
+  border-radius: 15px;
 }
 
 .more {
@@ -124,20 +177,7 @@ nav a {
   font-size: 16px;
 }
 
-header a {
-  color: black; /* Set your link color */
-  transition: text-decoration-color 0.3s ease; /* Smooth transition for the underline */
-  text-underline-offset: 5px; /* Distance of underline from the text */
-  text-decoration-style: solid;
-  text-decoration: underline transparent solid 5px;
-}
-
-header a:hover {
-  text-decoration-color: purple; /* Set your underline color on hover */
-}
-
-
-/* Responsive adjustments for smaller screens */
+/* Responsive Adjustments */
 @media (max-width: 600px) {
   nav a, .sign-in {
     font-size: 14px;
@@ -150,28 +190,24 @@ header a:hover {
   .search-bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
-  .search {
-    margin-bottom: 10px;
+  .search, .filter, .search-bar input {
     width: 100%;
-  }
-
-  .search-bar input {
     margin-bottom: 10px;
-    width: 100%;
   }
 
   .pet-grid {
-    display: flex; /* Change to flex */
-    flex-direction: column; /* Arrange items in a vertical column */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .pet-card {
-    width: 75%; /* Ensure a fixed width for a consistent look */
-    margin: 10px 0; /* Add vertical spacing between cards */
+    width: 75%;
+    margin: 10px 0;
   }
 
   .more {
@@ -179,9 +215,8 @@ header a:hover {
   }
 }
 
-/* Adjustments for medium-sized screens like tablets */
 @media (min-width: 600px) and (max-width: 1024px) {
   .pet-grid {
-    grid-template-columns: 1fr 1fr; /* Two columns for tablets */
+    grid-template-columns: 1fr 1fr;
   }
 }
