@@ -29,7 +29,7 @@ header .logo {
 
 nav a {
     margin: 0 15px;
-    color: #333; /* Change to your desired color */
+    color: #333;
     text-decoration: none;
     font-weight: bold;
     transition: text-decoration-color 0.3s ease;
@@ -38,7 +38,7 @@ nav a {
 }
 
 nav a:hover {
-    text-decoration-color: #FF9F1C; /* Color on hover */
+    text-decoration-color: #FF9F1C;
 }
 
 .sign-in {
@@ -53,67 +53,89 @@ nav a:hover {
 }
 
 .sign-in:hover {
-    background-color: #ff8c00; /* Hover effect for sign-in button */
+    background-color: #ff8c00;
 }
 
 /* Container */
 .container {
-    width: 90%; /* Set width to 90% for more space on larger screens */
-    max-width: 1200px; /* Maintain a maximum width for larger screens */
+    width: 90%;
+    max-width: 1200px;
     padding: 20px;
-    margin: auto; /* Center the container */
+    margin: auto;
 }
-
 
 /* Main Content */
 main {
     display: flex;
     margin-bottom: 20px;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .pet-info {
-    width: 50%;
-    background-color: #fff; /* Match the background color */
-    overflow: hidden; /* To prevent any overflow issues */
-    box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1); /* Same shadow as pet-card */
-    text-align: center; /* Center the text */
-    padding: 10px; /* Same padding as pet-card */
+    width: 60%;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    margin-right: 20px;
+    max-height: 320px;
 }
-
 
 .pet-info h2 {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
+.details {
+    padding: 0 20px;
+}
+
 .details p {
-    margin: 5px 0;
+    margin: 15px 0;
+    text-align: left;
 }
 
 .pet-image {
-    width: 350px; /* Set the width of the image container */
-    height: 320px; /* Set the height of the image container */
-    border-radius: 10px; /* Rounded corners */
-    display: flex; /* Flexbox for centering */
-    align-items: center; /* Center the image vertically */
-    justify-content: center; /* Center the image horizontally */
-    overflow: hidden; /* Prevent overflow */
+    width: 380px;
+    height: 320px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .pet-image img {
-    width: 100%; /* Make the image fill the container */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 100%; /* Ensure image does not exceed container height */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
+.history {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    background-color: #EEECEC;
+    border-radius: 20px;
+    border-style: dashed;
+    border-width: 3px;
+    border-color: #D6D5D5;
+}
+
+.history p {
+    text-align: center;
+    margin: 0;
+}
 
 /* Contact Section */
 .contact {
     background-color: white;
     border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 50px;
+    box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .contact h3 {
@@ -125,45 +147,73 @@ main {
     color: gray;
 }
 
+hr {
+    border: 3px solid #ffa500;
+    border-radius: 20px;
+    margin: 15px 0;
+}
+
+.contact button {
+    background-color: #ffa500;
+    color: #fff;
+    border: none;
+    padding: 10px 35px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background-color: #ff8c00;
+}
+
+/* Textarea */
 textarea {
     width: 100%;
-    height: 50px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    height: 30vh;
     padding: 10px;
-    border: 1px solid #ddd;
+    background-color: #EEECEC;
+    border-radius: 20px;
+    border: 3px dashed #D6D5D5;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 600px) {
-    header {
-        flex-direction: column; /* Stack items vertically */
-        align-items: flex-start; /* Align to the left */
-    }
-
-    nav {
-        margin-top: 10px; /* Space between logo and navigation */
-    }
-
-    nav a, .sign-in {
-        font-size: 14px; /* Smaller text on small screens */
-    }
-
-    .sign-in {
-        padding: 6px 11px; /* Adjust padding */
-    }
-
     .container {
-        width: 90%; /* Make container width responsive */
+        width: 90%;
     }
 
     main {
-        flex-direction: column; /* Stack pet info and image */
-        align-items: center; /* Center align */
+        margin-bottom: 20px;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .pet-info, .pet-image {
-        width: 100%; /* Full width on small screens */
-        margin-bottom: 10px; /* Space between sections */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .pet-info {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .pet-image {
+        order: -1;
+        width: 100%;
+        height: auto;
+    }
+
+    .contact {
+        padding: 10px;
+    }
+
+    textarea {
+        height: 20vh;
     }
 }
