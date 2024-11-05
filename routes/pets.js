@@ -11,25 +11,26 @@ const {
 } = require('../controllers/pets');
 
 // Home page route
-router.route('/').get((req, res) => {
+router.route('/pets').get((req, res) => {
     res.render('homePage');
 });
 
 // Gallery route
-router.route('/gallery').get(getAllPets);
+router.route('/pets/gallery').get(getAllPets);
 
 // Pet profile route
-router.route('/pet-profile/:id').get(getPetProfile);
+router.route('/pets/:id').get(getPetProfile);
 
 // Admin dashboard routes
-router.route('/adminDashboard')
+router.route('/pets/adminDashboard')
     .get(getAdminDashboard)
     .delete(deletePet)
     .post(upload.single('mainImage'), createPet);
 
 // Add pet routes
-router.route('/addPet')
+router.route('/pets/addPet')
     .get((req, res) => res.render('addPet'))
     .post(upload.single('mainImage'), createPet);  
+
 
 module.exports = router;

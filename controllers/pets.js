@@ -40,7 +40,7 @@ const createPet = asyncWrapper(async (req, res) => {
 });
 
 const getPetProfile = asyncWrapper(async (req, res) => {
-    const { id: petID } = req.params;
+    const { id: petID } = req.params;  // The pet ID from the URL
     const pet = await PetInfo.findOne({ _id: petID });
     if (!pet) {
         return res.status(404).json({ msg: `No pet with id: ${petID}` });
