@@ -20,11 +20,17 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    font-size: x-large;
 }
 
 header .logo {
     font-size: 24px;
     font-weight: bold;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav a {
@@ -45,11 +51,12 @@ nav a:hover {
     background-color: #ffa500;
     color: #fff;
     border: none;
-    padding: 10px 15px;
+    padding: 15px 20px;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: large;
 }
 
 .sign-in:hover {
@@ -183,7 +190,10 @@ textarea {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+    body {
+        background-image: url(./images/SmallBackground.png);
+    }
     .container {
         width: 90%;
     }
@@ -219,5 +229,14 @@ textarea {
 
     textarea {
         height: 20vh;
+    }
+
+    header {
+        font-size: large;
+    }
+
+    .sign-in {
+        padding: 10px 15px;
+        font-size: small;
     }
 }

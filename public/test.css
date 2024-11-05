@@ -29,13 +29,18 @@ header {
 }
 
 header a {
-  font-size: larger;
+  font-size: x-large;
 }
 
 /* Header */
 .logo {
   font-size: 24px;
   font-weight: bold;
+}
+
+nav {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
@@ -61,11 +66,12 @@ header a:hover {
   background-color: #ffa500;
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 15px 20px;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: large;
 }
 
 .sign-in:hover {
@@ -179,6 +185,9 @@ header a:hover {
 
 /* Responsive Adjustments */
 @media (max-width: 600px) {
+  body {
+    background-image: url(./images/SmallBackground.png);
+  }
   nav a, .sign-in {
     font-size: 14px;
   }
@@ -206,7 +215,7 @@ header a:hover {
   }
 
   .pet-card {
-    width: 75%;
+    width: 95%;
     margin: 10px 0;
   }
 
