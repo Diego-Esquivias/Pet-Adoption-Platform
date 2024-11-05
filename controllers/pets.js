@@ -32,7 +32,7 @@ const createPet = asyncWrapper(async (req, res) => {
         console.log("Pet data to save:", petData); 
         await PetInfo.create(petData);
 
-        res.redirect('/gallery');
+        res.redirect('gallery');
     } catch (error) {
         console.error('Error creating pet:', error);
         res.render('addPet', { error: 'Error saving pet data. Please try again.' });
@@ -40,7 +40,7 @@ const createPet = asyncWrapper(async (req, res) => {
 });
 
 const getPetProfile = asyncWrapper(async (req, res) => {
-    const { id: petID } = req.params;  // The pet ID from the URL
+    const { id: petID } = req.params; 
     const pet = await PetInfo.findOne({ _id: petID });
     if (!pet) {
         return res.status(404).json({ msg: `No pet with id: ${petID}` });

@@ -9,13 +9,12 @@
     <h3>Admin Dashboard</h3>
     <div class="pet-grid">
         <% pets.forEach(pet => { %>
-            
             <div class="pet-card">
                 <div class="image-container">
                     <img src="<%= pet.image %>" alt="<%= pet.name %>">
                 </div>
                 <div class="pet-info">
-                    <!-- Update the href to point to /pets/<%= pet._id %> -->
+                    <!-- Corrected href to point to /pets/<%= pet._id %> -->
                     <a href="/pets/<%= pet._id %>" class="pet-profile-link">
                         <h3><%= pet.name %></h3>
                     </a>
