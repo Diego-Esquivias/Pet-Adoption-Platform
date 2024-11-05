@@ -69,6 +69,7 @@ main {
     display: flex;
     margin-bottom: 20px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .pet-info {
@@ -80,7 +81,7 @@ main {
     padding: 10px;
     border-radius: 20px;
     margin-right: 20px;
-    max-height: 320px;
+    height: auto;
 }
 
 .pet-info h2 {
@@ -90,6 +91,7 @@ main {
 
 .details {
     padding: 0 20px;
+    margin-left: 30px;
 }
 
 .details p {
@@ -115,7 +117,6 @@ main {
 
 .history {
     width: 100%;
-    height: 100px;
     padding: 10px;
     background-color: #EEECEC;
     border-radius: 20px;
@@ -199,8 +200,11 @@ textarea {
     }
 
     .pet-info {
-        padding: 8px;
+        padding: 15px;
         font-size: 0.9em;
+        height: auto;
+        max-height: none;
+        margin-right: 0;
     }
 
     .pet-image {
@@ -210,7 +214,7 @@ textarea {
     }
 
     .contact {
-        padding: 10px;
+        padding: 15px;
     }
 
     textarea {
