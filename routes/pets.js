@@ -19,7 +19,7 @@ router.route('/').get((req, res) => {
 router.route('/gallery').get(getAllPets);
 
 // Pet profile route
-router.route('/pet-profile/:id').get(getPetProfile);
+router.route('/:id').get(getPetProfile);
 
 // Admin dashboard routes
 router.route('/adminDashboard')
@@ -31,5 +31,6 @@ router.route('/adminDashboard')
 router.route('/addPet')
     .get((req, res) => res.render('addPet'))
     .post(upload.single('mainImage'), createPet);  
+
 
 module.exports = router;

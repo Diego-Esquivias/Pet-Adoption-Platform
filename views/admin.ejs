@@ -6,6 +6,37 @@
     <title>Admin</title>
 </head>
 <body>
-    
+    <h3>Admin Dashboard</h3>
+    <div class="pet-grid">
+        <% pets.forEach(pet => { %>
+            <div class="pet-card">
+                <div class="image-container">
+                    <img src="<%= pet.image %>" alt="<%= pet.name %>">
+                </div>
+                <div class="pet-info">
+                    <!-- Corrected href to point to /pets/<%= pet._id %> -->
+                    <a href="/pets/<%= pet._id %>" class="pet-profile-link">
+                        <h3><%= pet.name %></h3>
+                    </a>
+                    <hr>
+                    <p><%= pet.age %></p>
+                    <p><%= pet.gender %></p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <div class="user-grid">
+        <% users.forEach(user => { %>
+                <div class="user-card">
+                    <div class="user-info">
+                        <h3><%= user.username %></h3>
+                        <hr>
+                        <p><%= user.password %></p>
+                    </div>
+                </div>
+            </a>
+        <% }); %>
+    </div>
 </body>
 </html>

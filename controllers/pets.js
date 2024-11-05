@@ -10,9 +10,9 @@ const getAllPets = asyncWrapper(async (req, res) => {
 });
 
 const createPet = asyncWrapper(async (req, res) => {
-    console.log("Received request:", req.body); // Debugging line
+    console.log("Received request:", req.body);
     if (!req.file) {
-        console.log("No file uploaded."); // Debugging line
+        console.log("No file uploaded."); 
         return res.render('addPet', { error: 'Image is required.' });
     }
 
@@ -26,13 +26,13 @@ const createPet = asyncWrapper(async (req, res) => {
 
         const petData = {
             ...req.body,
-            mainImage: cloudinaryResponse.secure_url // Ensure this is the correct field name
+            mainImage: cloudinaryResponse.secure_url
         };
 
-        console.log("Pet data to save:", petData); // Debugging line
+        console.log("Pet data to save:", petData); 
         await PetInfo.create(petData);
 
-        res.redirect('/gallery');
+        res.redirect('gallery');
     } catch (error) {
         console.error('Error creating pet:', error);
         res.render('addPet', { error: 'Error saving pet data. Please try again.' });
@@ -40,7 +40,7 @@ const createPet = asyncWrapper(async (req, res) => {
 });
 
 const getPetProfile = asyncWrapper(async (req, res) => {
-    const { id: petID } = req.params;
+    const { id: petID } = req.params; 
     const pet = await PetInfo.findOne({ _id: petID });
     if (!pet) {
         return res.status(404).json({ msg: `No pet with id: ${petID}` });
