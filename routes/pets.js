@@ -1,37 +1,35 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../middleware/upload'); 
 
-const{
+const {
     getAllPets,
     createPet,
     getPetProfile,
     deletePet,
-    getAllUsers,
+    getAdminDashboard
 } = require('../controllers/pets');
 
+// Home page route
 router.route('/').get((req, res) => {
-    res.render('homePage'); // Render the home.ejs file
+    res.render('homePage');
 });
 
-router.route('/gallery').get((req, res) => {
-    let pets = getAllPets;
-    res.render('gallery', { pets: pets }); // Render gallery.ejs and pass all pets data
-});
+// Gallery route
+router.route('/gallery').get(getAllPets);
 
-router.route('/pet-profile/:id').get((req, res) => {
-    let profile = getPetProfile;
-    res.render('profile', { pet: profile }); // Render petProfile.ejs with pet profile data
-});
+// Pet profile route
+router.route('/pet-profile/:id').get(getPetProfile);
 
-router.route('/adminDashboard').get((req, res) => {
-        let pets = getAllPets;
-        let users  = getAllUsers;
-        res.render('admin.ejs', {
-            pets: pets,
-            users: users
-        }); // Render adminDashboard.ejs and pass pets and users data
-    })
+// Admin dashboard routes
+router.route('/adminDashboard')
+    .get(getAdminDashboard)
     .delete(deletePet)
-    .post(createPet);
+    .post(upload.single('mainImage'), createPet);
+
+// Add pet routes
+router.route('/addPet')
+    .get((req, res) => res.render('addPet'))
+    .post(upload.single('mainImage'), createPet);  
 
 module.exports = router;
