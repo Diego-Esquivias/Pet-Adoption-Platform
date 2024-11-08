@@ -3,40 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Admin Dashboard</title>
 </head>
 <body>
     <h3>Admin Dashboard</h3>
+    
+    <h4>Pets</h4>
     <div class="pet-grid">
         <% pets.forEach(pet => { %>
             <div class="pet-card">
                 <div class="image-container">
+                    <!-- Ensure the correct image field is being used -->
                     <img src="<%= pet.image %>" alt="<%= pet.name %>">
                 </div>
                 <div class="pet-info">
-                    <!-- Corrected href to point to /pets/<%= pet._id %> -->
-                    <a href="/pets/<%= pet._id %>" class="pet-profile-link">
+                    <a href="/pets/pet-profile/<%= pet._id %>" class="pet-profile-link">
                         <h3><%= pet.name %></h3>
                     </a>
                     <hr>
-                    <p><%= pet.age %></p>
-                    <p><%= pet.gender %></p>
+                    <p><%= pet.age %> years old</p>
+                    <p><%= pet.breed %></p>
+                        <a href="/pets/edit/<%= pet._id %>"><button type="submit">Edit Pet</button></a>
+
+                    <form action="/pets/delete/<%= pet._id %>" method="POST">
+                        <button type="submit">Delete Pet</button>
+                    </form>
                 </div>
             </div>
         <% }); %>
     </div>
 
+    <h4>Users</h4>
     <div class="user-grid">
         <% users.forEach(user => { %>
-                <div class="user-card">
-                    <div class="user-info">
-                        <h3><%= user.username %></h3>
-                        <hr>
-                        <p><%= user.password %></p>
-                    </div>
+            <div class="user-card">
+                <div class="user-info">
+                    <h3><%= user.username %></h3>
+                    <hr>
+                    <p><%= user.email %></p>
+                    <form action="/users/delete/<%= user._id %>" method="POST">
+                        <button type="submit">Delete User</button>
+                    </form>
                 </div>
-            </a>
+            </div>
         <% }); %>
     </div>
+
+    <a href="/pets"><button type="submit">Log Out</button></a>
+
 </body>
 </html>

@@ -11,7 +11,8 @@
         <div class="logo">Logo</div>
         <nav>
             <a href="/pets">Home</a>
-            <a href="#">Adopt</a>
+            <a href="/pets/addPet">Add Pet</a>
+            <a href="/pets/gallery">Gallery</a>
             <a href="/login"><button class="sign-in">Sign In</button></a>
         </nav>
     </header>
@@ -24,7 +25,7 @@
 
         <div class="pet-grid">
             <% pets.forEach(pet => { %>
-                <a href="<%= pet.link %>" class="pet-link">
+                <a href="/pets/pet-profile/<%= pet._id %>" class="pet-link">
                     <div class="pet-card">
                         <div class="image-container">
                             <img src="<%= pet.image %>" alt="<%= pet.name %>">
@@ -42,5 +43,7 @@
 
         <div class="more">There will be more below</div>
     </div>
+
+    
 </body>
 </html>

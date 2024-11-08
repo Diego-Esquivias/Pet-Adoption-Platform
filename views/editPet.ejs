@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pet</title>
+</head>
+<body>
+    <h1>Edit Pet</h1>
+    <form action="/pets/edit/<%= pet._id %>" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" value="<%= pet.name %>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Breed</label>
+            <input type="text" name="breed" value="<%= pet.breed %>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="age" value="<%= pet.age %>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" required><%= pet.description %></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Behavior</label>
+            <textarea name="behavior" required><%= pet.behavior %></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>History</label>
+            <textarea name="history"><%= pet.history %></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Owner Email</label>
+            <input type="email" name="ownerEmail" value="<%= pet.ownerEmail %>">
+        </div>
+
+        <div class="form-group">
+            <label for="image">Main Image</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <small>If you want to update the image, select a new one. Otherwise, leave it blank.</small>
+        </div>
+
+        <button type="submit">Update Pet</button>
+    </form>
+</body>
+</html>

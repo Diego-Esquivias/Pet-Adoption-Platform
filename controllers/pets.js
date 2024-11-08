@@ -1,7 +1,6 @@
 const PetInfo = require('../models/Pet');
 const User = require('../models/User'); 
 const asyncWrapper = require('../middleware/async');
-const cloudinary = require('../config/cloudinary');
 const upload = require('../middleware/upload'); 
 
 const getAllPets = asyncWrapper(async (req, res) => {
@@ -10,34 +9,20 @@ const getAllPets = asyncWrapper(async (req, res) => {
 });
 
 const createPet = asyncWrapper(async (req, res) => {
-    console.log("Received request:", req.body);
     if (!req.file) {
-        console.log("No file uploaded."); 
         return res.render('addPet', { error: 'Image is required.' });
     }
-
-    try {
-        const b64 = Buffer.from(req.file.buffer).toString('base64');
-        const dataURI = `data:${req.file.mimetype};base64,${b64}`;
-        
-        const cloudinaryResponse = await cloudinary.uploader.upload(dataURI, {
-            folder: 'pet-adoption-site',
-        });
 
         const petData = {
             ...req.body,
             mainImage: cloudinaryResponse.secure_url
         };
 
-        console.log("Pet data to save:", petData); 
         await PetInfo.create(petData);
+        res.redirect('/pets');  // Redirect to the pet gallery
 
-        res.redirect('gallery');
-    } catch (error) {
-        console.error('Error creating pet:', error);
-        res.render('addPet', { error: 'Error saving pet data. Please try again.' });
-    }
 });
+
 
 const getPetProfile = asyncWrapper(async (req, res) => {
     const { id: petID } = req.params; 
@@ -53,75 +38,50 @@ const getPetProfile = asyncWrapper(async (req, res) => {
 });
 
 const deletePet = asyncWrapper(async (req, res) => {
-    const { id: petID } = req.params;
+    const { id: petID } = req.params;  // Get the pet ID from the URL parameters
     const pet = await PetInfo.findOne({ _id: petID });
-    
+
     if (!pet) {
         return res.status(404).json({ msg: `No pet with id: ${petID}` });
     }
 
-    // Delete image from Cloudinary if it exists
-    if (pet.mainTimage) {
-        try {
-            // Extract public_id from the URL
-            const publicId = pet.mainTimage.split('/').slice(-1)[0].split('.')[0];
-            await cloudinary.uploader.destroy(`pets/${publicId}`);
-        } catch (error) {
-            console.error('Error deleting image from Cloudinary:', error);
-        }
-    }
-
+    // Delete the pet from the database
     await PetInfo.findOneAndDelete({ _id: petID });
-    res.status(200).json({ msg: `Pet with id: ${petID} deleted` });
+
+    res.redirect('/pets/adminDashboard'); 
 });
 
 const updatePet = asyncWrapper(async (req, res) => {
     const { id: petID } = req.params;
     
+    // Extract the updated data
     let updateData = { ...req.body };
 
-    // Handle image update if a new file is uploaded
+    // If there's a new image uploaded
     if (req.file) {
-        try {
-            // Upload new image
-            const b64 = Buffer.from(req.file.buffer).toString('base64');
-            const dataURI = `data:${req.file.mimetype};base64,${b64}`;
-            const cloudinaryResponse = await cloudinary.uploader.upload(dataURI, {
-                folder: 'pets'
-            });
-            
-            updateData.mainTimage = cloudinaryResponse.secure_url;
-
-            // Delete old image if it exists
-            const oldPet = await PetInfo.findById(petID);
-            if (oldPet?.mainTimage) {
-                const publicId = oldPet.mainTimage.split('/').slice(-1)[0].split('.')[0];
-                await cloudinary.uploader.destroy(`pets/${publicId}`);
-            }
-        } catch (error) {
-            console.error('Error updating image:', error);
-            return res.status(500).json({ msg: 'Error updating image' });
-        }
+        updateData.imageUrl = req.file.path;
     }
 
-    const pet = await PetInfo.findOneAndUpdate(
-        { _id: petID }, 
-        updateData, 
+    // Perform the update
+    const updatedPet = await PetInfo.findOneAndUpdate(
+        { _id: petID },
+        updateData,
         {
-            new: true,
-            runValidators: true
+            new: true,           
+            runValidators: true  
         }
     );
 
-    if (!pet) {
-        return res.status(404).json({ msg: `No pet with id: ${petID}` });
+    if (!updatedPet) {
+        return res.status(404).json({ msg: `Pet with id ${petID} not found.` });
     }
-    res.status(200).json({ pet });
+
+    res.redirect('/pets/adminDashboard');
 });
 
 const getAllUsers = asyncWrapper(async (req, res) => {
     const users = await User.find({});
-    return res.status(200).json({ users });
+    return res.render('gallery', { users });
 });
 
 const getAdminDashboard = asyncWrapper(async (req, res) => {
