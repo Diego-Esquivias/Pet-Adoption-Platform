@@ -27,14 +27,11 @@ const PetSchema = new mongoose.Schema({
         trim: true,
     },
     history:{
-
-    },
-    mainImage:{
         type: String,
+        required: [true, 'Must provide behavior'],
         trim: true,
     },
-    descriptionImages:[{}],
-    ownerEmail:{
+    mainImage:{
         type: String,
         trim: true,
     }

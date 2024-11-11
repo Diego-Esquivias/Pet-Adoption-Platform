@@ -10,7 +10,7 @@ const getAllUsers = asyncWrapper(async (req, res) => {
 })
 
 const findUser = asyncWrapper(async (req, res) => {
-    const { username } = req.body; // Change this to req.body since you're getting username from the body
+    const { username } = req.body; 
     const { password } = req.body;
 
     const user = await User.findOne({username});
