@@ -8,9 +8,7 @@ router.route('/').get((req, res) => {
 
 router.route('/login').get((req, res) => {
     res.render('login');
-}).post(findUser, (req, res) => {
-    res.render('homePage');
-    })
+}).post(findUser)
 
 router.route('/register').get((req, res) => {
     res.render('register');
