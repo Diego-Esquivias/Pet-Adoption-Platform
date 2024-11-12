@@ -13,10 +13,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-body h2 {
-    margin-bottom: 20px;
-}
-
 /* Header */
 header {
     display: flex;
@@ -110,7 +106,7 @@ nav a:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    width: 1000px;
+    width: auto;
     height: auto;
 }
 
@@ -126,13 +122,26 @@ nav a:hover {
 .aboutUs {
     width: 80%;
     margin-bottom: 20px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 20px;
 }
 
 hr {
     border: 3px solid #ffa500;
     border-radius: 20px;
-    margin: 15px 0;
-    width: 80%;
+    margin: 0px auto 15px auto;
+    width: 60%;
+}
+
+.testimonial {
+    background-color: rgb(255, 255, 255);
+    box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 20px;
+    margin: 10px 20px;
 }
 
 /* Media query for smaller screens */
@@ -155,11 +164,11 @@ hr {
     }
 
     nav a, .sign-in {
-        font-size: 12px;
+        font-size: 16px;
     }
     
     nav a {
-        margin: 0 5px;
+        margin: 0 10px;
     }
     
     header {
