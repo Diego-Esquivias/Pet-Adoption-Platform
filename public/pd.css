@@ -262,4 +262,8 @@ textarea {
     .sign-in {
         padding: 6px 11px;
     }
+
+    body {
+        background-image: url(./images/SmallBackground.png);
+    }
 }
