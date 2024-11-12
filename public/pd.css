@@ -215,6 +215,7 @@ textarea {
         height: auto;
         max-height: none;
         margin-right: 0;
+        margin-bottom: 0;
     }
 
     .pet-image {
@@ -238,5 +239,27 @@ textarea {
     .sign-in {
         padding: 10px 15px;
         font-size: small;
+    }
+
+    .details {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    nav a, .sign-in {
+        font-size: 12px;
+    }
+    
+    nav a {
+        margin: 0 5px;
+    }
+    
+    header {
+        padding: 5px;
+    }
+
+    .sign-in {
+        padding: 6px 11px;
     }
 }

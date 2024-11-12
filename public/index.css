@@ -58,7 +58,7 @@ textarea {
     border: 1px #BCBCBC solid;
 }
 
-button {
+button, input[type="submit"] {
     width: 50%;
     padding: 0.8rem;
     margin-bottom: 1rem;
@@ -73,7 +73,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover, input[type="submit"]:hover {
     background-color: #d88818;
 }
 
@@ -131,6 +131,6 @@ input[type="file"] {
 
 @media (max-width: 800px) {
     .items {
-      flex: 40%;
+        flex: 40%;
     }
 }

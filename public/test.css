@@ -189,7 +189,15 @@ header a:hover {
     background-image: url(./images/SmallBackground.png);
   }
   nav a, .sign-in {
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  nav a {
+    margin: 0 5px;
+  }
+
+  header {
+    padding: 5px;
   }
 
   .sign-in {

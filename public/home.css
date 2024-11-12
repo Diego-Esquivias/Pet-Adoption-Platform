@@ -13,6 +13,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+body h2 {
+    margin-bottom: 20px;
+}
+
 /* Header */
 header {
     display: flex;
@@ -116,4 +120,36 @@ hr {
     border-radius: 20px;
     margin: 15px 0;
     width: 80%;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .testimonials {
+        flex-direction: column;
+        width: 100%; /* Adjust width to fit the container */
+        align-items: center; /* Center-align items in the column layout */
+    }
+
+    .testimonials img {
+        max-width: 80%; /* Make images responsive */
+        margin-bottom: 20px; /* Add space between images in column layout */
+    }
+}
+
+@media (max-width: 600px) {
+    nav a, .sign-in {
+        font-size: 12px;
+    }
+    
+    nav a {
+        margin: 0 5px;
+    }
+    
+    header {
+        padding: 5px;
+    }
+
+    .sign-in {
+        padding: 6px 11px;
+    }
 }
