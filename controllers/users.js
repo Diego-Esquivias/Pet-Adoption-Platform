@@ -36,8 +36,8 @@ const findUser = asyncWrapper(async (req, res) => {
     req.session.userId = user._id;  
 
     // Redirect based on user role or success
-    if (req.session.isAuth && user.Role === 'admin') {
-        return res.redirect('/admin/dashboard');
+    if (req.session.isAuth && user.role === 'admin') {
+        return res.redirect('pets/adminDashboard');
     } else {
         return res.redirect('/pets');  
     }

@@ -31,9 +31,16 @@ const PetSchema = new mongoose.Schema({
         required: [true, 'Must provide behavior'],
         trim: true,
     },
-    mainImage:{
+    location:{
+        type: String,
+        required: [true, 'Must provide location'],
+        trim: true,
+        
+    },
+    imageUrl:{
         type: String,
         trim: true,
+        required: [true, 'Must provide']
     }
     
 }, {collection: 'pets'})

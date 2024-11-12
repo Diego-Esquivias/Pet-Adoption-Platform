@@ -25,7 +25,7 @@
                     <p><%= pet.breed %></p>
                         <a href="/pets/edit/<%= pet._id %>"><button type="submit">Edit Pet</button></a>
 
-                    <form action="/pets/delete/<%= pet._id %>" method="POST">
+                    <form action="/pet/delete/<%= pet._id %>" method="POST">
                         <button type="submit">Delete Pet</button>
                     </form>
                 </div>
@@ -41,7 +41,7 @@
                     <h3><%= user.username %></h3>
                     <hr>
                     <p><%= user.email %></p>
-                    <form action="/users/delete/<%= user._id %>" method="POST">
+                    <form action="user/delete/<%= user._id %>" method="POST">
                         <button type="submit">Delete User</button>
                     </form>
                 </div>

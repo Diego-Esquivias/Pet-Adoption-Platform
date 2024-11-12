@@ -16,10 +16,41 @@
         </nav>
     </header>
     <div class="container">
-        <div class="search-bar">
-            <input type="text" placeholder="Search">
-            <button class="search">Search</button>
-            <button class="filter">Filter</button>
+            <form action="/api/filter" method="POST">
+                <label for="breed">Breed</label>
+                <select id="breed" name="breed">
+                    <option value="">Select Breed</option>
+                    <% 
+                        const uniqueBreeds = [...new Set(pets.map(pet => pet.breed))]; 
+                        uniqueBreeds.forEach(breed => { 
+                    %>
+                    <option value="<%= breed %>"><%= breed %></option>
+                    <% }); %>
+                </select>
+            
+                <label for="location">Location</label>
+                <select id="location" name="location">
+                    <option value="">Select Location</option>
+                    <% 
+                        const uniqueLocations = [...new Set(pets.map(pet => pet.location))]; 
+                        uniqueLocations.forEach(location => { 
+                    %>
+                    <option value="<%= location %>"><%= location %></option>
+                    <% }); %>
+                </select>
+            
+                <label for="age">Age</label>
+                <select id="age" name="age">
+                    <option value="">Select Age</option>
+                    <option value="0-3">(0-3 Years)</option>
+                    <option value="3-6">(3-6 Years)</option>
+                    <option value="6-9">(6-9 Years)</option>
+                    <option value="9-12">(9-12 Years)</option>
+                    <option value="12+">(12+ Years)</option>
+                </select>
+            
+                <button type="submit" class="filter">Apply Filters</button>
+            </form>
         </div>
 
         <div class="pet-grid">
@@ -27,7 +58,7 @@
                 <a href="/pets/pet-profile/<%= pet._id %>" class="pet-link">
                     <div class="pet-card">
                         <div class="image-container">
-                            <img src="<%= pet.image %>" alt="<%= pet.name %>">
+                            <img src="<%= pet.imageURL %>" alt="<%= pet.name %>">
                         </div>
                         <div class="pet-info">
                             <h3><%= pet.name %></h3>
