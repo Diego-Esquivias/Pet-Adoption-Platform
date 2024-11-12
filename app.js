@@ -30,10 +30,23 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: store,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24, 
+        httpOnly: true,             
+        secure: process.env.NODE_ENV === 'production', 
+        sameSite: 'lax',
+    }
 }))
+
 app.use(express.static('./public'));
 app.use(express.json());
 app.set('view engine', 'ejs');
+
+app.use((req, res, next) => {
+    console.log('Session ID:', req.sessionID);
+    console.log('Is Authenticated:', req.session.isAuth);
+    next();
+});
 
 // Routes
 app.use('/pets', petRoutes);

@@ -31,9 +31,12 @@ router.route('/').get(isAuth, (req, res) => {
     res.render('homePage');
 }).post( isAuth, (req, res) => {
     req.session.destroy((err) => {
-        if(err) throw err;
+        if (err) {
+            return res.status(500).send('Failed to log out');
+        }
+        res.clearCookie('connect.sid');  
         res.redirect('/login');
-    })
+    });
 })
 
 

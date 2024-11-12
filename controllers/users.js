@@ -6,6 +6,12 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const MongoDBSession = require('connect-mongodb-session')(session);
 
+const store = new MongoDBSession({
+    uri: process.env.MONGOURI,
+    collection:'sessions',
+})
+
+
 
 const getAllUsers = asyncWrapper(async (req, res) => {
     const users = await User.find({});
@@ -13,36 +19,30 @@ const getAllUsers = asyncWrapper(async (req, res) => {
 })
 
 const findUser = asyncWrapper(async (req, res) => {
-    const { username } = req.body; 
-    const { password } = req.body;
+    const { username, password } = req.body;  
 
-    const user = await User.findOne({username});
+    const user = await User.findOne({ username });
     if (!user) {
-        // Render login with an error message if user is not found
         return res.render('login', { msg: `No user with the username ${username}` });
     }
 
-    // Compare the provided password with the hashed password in the database
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);  
     if (!isMatch) {
-        // Render login with an error message if password is incorrect
         return res.render('login', { msg: 'Invalid password' });
     }
 
-    // If the username exists and the password matches, render the home page
-    if(user.role === 'admin') {
-        const [pets, users] = await Promise.all([
-            PetInfo.find({}),
-            User.find({})
-        ]);
-        req.session.isAuth = true
-        return res.render('admin', { pets, users });
-    }else{
-        req.session.isAuth = true
-        console.log(session);
-        return res.render('homePage', { msg: 'Login successful', user: user });
+    // On successful login, set session variables
+    req.session.isAuth = true;  //authentication flag
+    req.session.userId = user._id;  
+
+    // Redirect based on user role or success
+    if (user.role === 'admin') {
+        return res.redirect('/admin/dashboard');
+    } else {
+        return res.redirect('/pets');  
     }
 });
+
 
 const registerUser = asyncWrapper(async (req, res) => {
     const { username, email, password } = req.body;   
