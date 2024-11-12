@@ -16,24 +16,27 @@
         </nav>
     </header>
     <div class="container">
-        <div class="search-bar">
-            <input type="text" placeholder="Search">
-            <button class="search">Search</button>
             <form action="/api/filter" method="POST">
                 <label for="breed">Breed</label>
                 <select id="breed" name="breed">
                     <option value="">Select Breed</option>
-                    <option value="Labrador">Labrador</option>
-                    <option value="Beagle">Beagle</option>
-                    <option value="Bulldog">Bulldog</option>
+                    <% 
+                        const uniqueBreeds = [...new Set(pets.map(pet => pet.breed))]; 
+                        uniqueBreeds.forEach(breed => { 
+                    %>
+                    <option value="<%= breed %>"><%= breed %></option>
+                    <% }); %>
                 </select>
             
                 <label for="location">Location</label>
                 <select id="location" name="location">
-                    <option value="New York">New York</option>
                     <option value="">Select Location</option>
-                    <option value="Chicago">Chicago</option>
-                    <option value="Los Angeles">Los Angeles</option>
+                    <% 
+                        const uniqueLocations = [...new Set(pets.map(pet => pet.location))]; 
+                        uniqueLocations.forEach(location => { 
+                    %>
+                    <option value="<%= location %>"><%= location %></option>
+                    <% }); %>
                 </select>
             
                 <label for="age">Age</label>
