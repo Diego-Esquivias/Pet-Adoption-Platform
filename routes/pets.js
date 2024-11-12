@@ -11,6 +11,7 @@ const {
     createPet,
     getPetProfile,
     deletePet,
+    deleteUser,
     getAdminDashboard,
     updatePet,
 } = require('../controllers/pets');
@@ -66,7 +67,7 @@ router.route('/gallery').get(isAuth, getAllPets).post(isAuth, async (req, res) =
 // Admin dashboard routes
 router.route('/adminDashboard')
     .get(isAuth, getAdminDashboard)
-    .post( isAuth, upload.single('image'), createPet);
+    .post(isAuth, upload.single('image'), createPet);
 
     // Add pet routes
 router.route('/addPet')
@@ -91,7 +92,9 @@ router.route('/edit/:id')
     })
     .post(isAuth, upload.single('image'), updatePet);
 
-router.route('/delete/:id').post(isAuth, deletePet);
+router.route('/pet/delete/:id').post(isAuth, deletePet);
+
+router.route('/user/delete/:id').post(isAuth, deleteUser);
 
 
 

@@ -109,6 +109,19 @@ const getAdminDashboard = asyncWrapper(async (req, res) => {
 });
 
 
+const deleteUser = asyncWrapper(async (req, res) => {
+    const { id: userID } = req.params; 
+    const user = await User.findOne({ _id: userID });
+
+    if (!user) {
+        return res.status(404).json({ msg: `No pet with id: ${userID}` });
+    }
+
+    await User.findOneAndDelete({ _id: userID });
+
+    res.redirect('/pets/adminDashboard'); 
+});
+
 
 module.exports = {
     getAllPets,
@@ -117,5 +130,6 @@ module.exports = {
     deletePet,
     updatePet,
     getAllUsers,
+    deleteUser,
     getAdminDashboard
 };
