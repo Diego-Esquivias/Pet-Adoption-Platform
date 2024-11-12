@@ -19,6 +19,35 @@
         <div class="search-bar">
             <input type="text" placeholder="Search">
             <button class="search">Search</button>
+            <form action="/api/filter" method="POST">
+                <label for="breed">Breed</label>
+                <select id="breed" name="breed">
+                    <option value="">Select Breed</option>
+                    <option value="Labrador">Labrador</option>
+                    <option value="Beagle">Beagle</option>
+                    <option value="Bulldog">Bulldog</option>
+                </select>
+            
+                <label for="location">Location</label>
+                <select id="location" name="location">
+                    <option value="New York">New York</option>
+                    <option value="">Select Location</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                </select>
+            
+                <label for="age">Age</label>
+                <select id="age" name="age">
+                    <option value="">Select Age</option>
+                    <option value="0">(0-3 Years)</option>
+                    <option value="2">(3-6 Years)</option>
+                    <option value="3">(6-9 Years)</option>
+                    <option value="4">(9-12 Years)</option>
+                    <option value="5">(12+ Years)</option>
+                </select>
+            
+                <button type="submit">Apply Filters</button>
+            </form>
             <button class="filter">Filter</button>
         </div>
 
@@ -27,7 +56,7 @@
                 <a href="/pets/pet-profile/<%= pet._id %>" class="pet-link">
                     <div class="pet-card">
                         <div class="image-container">
-                            <img src="<%= pet.image %>" alt="<%= pet.name %>">
+                            <img src="<%= pet.imageURL %>" alt="<%= pet.name %>">
                         </div>
                         <div class="pet-info">
                             <h3><%= pet.name %></h3>

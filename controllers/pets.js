@@ -9,8 +9,8 @@ const getAllPets = asyncWrapper(async (req, res) => {
 });
 
 const createPet = asyncWrapper(async (req, res) => {
-    const { name, breed, age, loaction, history, description } = req.body;
-
+    const { name, breed, age, location, behavior, history, description } = req.body;
+    // let imageUrl =req.file.path
     // Ensure that an image is uploaded
     if (!req.file) {
         return res.render('addPet', { error: 'Image is required.' });
@@ -19,14 +19,16 @@ const createPet = asyncWrapper(async (req, res) => {
     try {
         // If you are using Cloudinary for image uploads
         const cloudinaryResponse = await cloudinary.uploader.upload(req.file.path);
+        const imageUrl =  req.file.path;
         const petData = {
             name,
             breed,
             age,
-            loaction,
+            location,
+            behavior,
             history,
             description,
-            imageUrl: cloudinaryResponse.secure_url, 
+            imageUrl, 
         };
 
         await PetInfo.create(petData);  
@@ -105,6 +107,8 @@ const getAdminDashboard = asyncWrapper(async (req, res) => {
     ]);
     res.render('admin', { pets, users });
 });
+
+
 
 module.exports = {
     getAllPets,

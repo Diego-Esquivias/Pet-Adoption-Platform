@@ -19,7 +19,7 @@ const {
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-    folder: "task-manager",
+    folder: "pet-adoption-site",
     allowed_formats: ["jpg", "jpeg", "png"],
     },
 });
@@ -42,7 +42,26 @@ router.route('/').get(isAuth, (req, res) => {
 
 
 // Gallery route
-router.route('/gallery').get(isAuth, getAllPets);
+router.route('/gallery').get(isAuth, getAllPets).post(isAuth, async (req, res) => {
+    const { breed, location, age } = req.body;
+
+    let filter = {};
+
+    if (breed) filter.breed = breed;
+    if (location) filter.location = location;
+    if (age) filter.age = age;
+
+    try {
+      // Find pets that match the filters
+        const pets = await Pet.find(filter);
+
+      // Render the gallery page with the filtered pets
+        res.render('gallery', { pets });
+    } catch (err) {
+        console.error('Error fetching pets:', err);
+        res.status(500).send('Error fetching pets');
+    }
+    });
 
 // Admin dashboard routes
 router.route('/adminDashboard')
@@ -73,5 +92,7 @@ router.route('/edit/:id')
     .post(isAuth, upload.single('image'), updatePet);
 
 router.route('/delete/:id').post(isAuth, deletePet);
+
+
 
 module.exports = router;
