@@ -1,7 +1,7 @@
 const PetInfo = require('../models/Pet');
 const User = require('../models/User'); 
 const asyncWrapper = require('../middleware/async');
-const upload = require('../middleware/upload'); 
+
 
 const getAllPets = asyncWrapper(async (req, res) => {
     const pets = await PetInfo.find({});

@@ -1,7 +1,10 @@
+const { request } = require('express');
 const asyncWrapper = require('../middleware/async');    
 const PetInfo = require('../models/Pet');
 const User = require('../models/User'); 
 const bcrypt = require('bcrypt');
+const session = require('express-session');
+const MongoDBSession = require('connect-mongodb-session')(session);
 
 
 const getAllUsers = asyncWrapper(async (req, res) => {
@@ -32,9 +35,12 @@ const findUser = asyncWrapper(async (req, res) => {
             PetInfo.find({}),
             User.find({})
         ]);
+        req.session.isAuth = true
         return res.render('admin', { pets, users });
     }else{
-    return res.render('homePage', { msg: 'Login successful', user: user });
+        req.session.isAuth = true
+        console.log(session);
+        return res.render('homePage', { msg: 'Login successful', user: user });
     }
 });
 

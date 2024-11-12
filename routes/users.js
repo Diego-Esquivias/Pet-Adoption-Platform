@@ -4,8 +4,13 @@ const { getAllUsers, findUser, registerUser } = require('../controllers/users');
 
 router.route('/').get((req, res) => {
         res.render('login'); 
-})
-.post(findUser)
+});
+
+router.route('/login').get((req, res) => {
+    res.render('login');
+}).post(findUser, (req, res) => {
+    res.render('homePage');
+    })
 
 router.route('/register').get((req, res) => {
     res.render('register');
