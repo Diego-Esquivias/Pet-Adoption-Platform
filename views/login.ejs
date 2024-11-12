@@ -10,17 +10,18 @@
     <div class="login-container">
         <h1>Log In</h1>
         <form action="/login" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+            
             <button type="submit">Login</button>
-
+        </form>
             <br>
     
-            <small>Dont have a log in? <a href="/login/register"> Sign up!</small></a>
-            
-        </form>
+            <small>Don't have a login? <a href="/login/register">Sign up!</a></small>
+        
     </div>
 </body>
 </html>

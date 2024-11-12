@@ -1,7 +1,7 @@
 const PetInfo = require('../models/Pet');
 const User = require('../models/User'); 
 const asyncWrapper = require('../middleware/async');
-
+const cloudinary = require('cloudinary').v2;
 
 const getAllPets = asyncWrapper(async (req, res) => {
     const pets = await PetInfo.find({});
@@ -9,18 +9,32 @@ const getAllPets = asyncWrapper(async (req, res) => {
 });
 
 const createPet = asyncWrapper(async (req, res) => {
+    const { name, breed, age, loaction, history, description } = req.body;
+
+    // Ensure that an image is uploaded
     if (!req.file) {
         return res.render('addPet', { error: 'Image is required.' });
     }
 
+    try {
+        // If you are using Cloudinary for image uploads
+        const cloudinaryResponse = await cloudinary.uploader.upload(req.file.path);
         const petData = {
-            ...req.body,
-            mainImage: cloudinaryResponse.secure_url
+            name,
+            breed,
+            age,
+            loaction,
+            history,
+            description,
+            imageUrl: cloudinaryResponse.secure_url, 
         };
 
-        await PetInfo.create(petData);
-        res.redirect('/pets');  // Redirect to the pet gallery
-
+        await PetInfo.create(petData);  
+        res.redirect('/pets');  
+    } catch (error) {
+        console.error(error);
+        return res.render('addPet', { error: 'Something went wrong. Please try again later.' });
+    }
 });
 
 

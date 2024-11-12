@@ -19,11 +19,11 @@ const getAllUsers = asyncWrapper(async (req, res) => {
 })
 
 const findUser = asyncWrapper(async (req, res) => {
-    const { username, password } = req.body;  
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
     if (!user) {
-        return res.render('login', { msg: `No user with the username ${username}` });
+        return res.render('login', { msg: `No user with the username ${email}` });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);  
@@ -32,11 +32,11 @@ const findUser = asyncWrapper(async (req, res) => {
     }
 
     // On successful login, set session variables
-    req.session.isAuth = true;  //authentication flag
+    req.session.isAuth = true; 
     req.session.userId = user._id;  
 
     // Redirect based on user role or success
-    if (user.role === 'admin') {
+    if (req.session.isAuth && user.Role === 'admin') {
         return res.redirect('/admin/dashboard');
     } else {
         return res.redirect('/pets');  

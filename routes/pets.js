@@ -19,7 +19,7 @@ const {
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-      folder: "task-manager", // You can change this to any folder you prefer
+    folder: "task-manager",
     allowed_formats: ["jpg", "jpeg", "png"],
     },
 });
@@ -35,6 +35,7 @@ router.route('/').get(isAuth, (req, res) => {
             return res.status(500).send('Failed to log out');
         }
         res.clearCookie('connect.sid');  
+        console.log('Logged out successfully');
         res.redirect('/login');
     });
 })
@@ -51,13 +52,7 @@ router.route('/adminDashboard')
     // Add pet routes
 router.route('/addPet')
 .get(isAuth, (req, res) => res.render('addPet')) 
-.post(isAuth, upload.single('image'), async (req, res) => {
-    const { name, breed, age, description } = req.body;
-    const imageUrl = req.file ? req.file.path : null; // Cloudinary URL or file path
-    const newPet = new Pet({ name, breed, age, description, imageUrl });
-    await newPet.save();
-    res.redirect('gallery');  
-});
+.post(isAuth, upload.single('image'), createPet); 
 
 // Pet profile route
 router.route('/pet-profile/:id').get(isAuth, getPetProfile);

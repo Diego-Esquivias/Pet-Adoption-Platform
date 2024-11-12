@@ -42,11 +42,11 @@ app.use(express.static('./public'));
 app.use(express.json());
 app.set('view engine', 'ejs');
 
-app.use((req, res, next) => {
-    console.log('Session ID:', req.sessionID);
-    console.log('Is Authenticated:', req.session.isAuth);
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log('Session ID:', req.sessionID);
+//     console.log('Is Authenticated:', req.session.isAuth);
+//     next();
+// });
 
 // Routes
 app.use('/pets', petRoutes);
@@ -60,7 +60,7 @@ const serverInit = async () => {
     try {
         await connectDB();
         app.listen(PORT, () => {
-            console.log(`Server is listening on http://localhost:${PORT}/`);
+            console.log(`Server is listening on http://localhost:${PORT}/login`);
         });
     } catch (error) {
         console.log(error);
