@@ -14,42 +14,44 @@
             <div class="pet-card">
                 <div class="image-container">
                     <!-- Ensure the correct image field is being used -->
-                    <img src="<%= pet.image %>" alt="<%= pet.name %>">
+                    <img src="<%= pet.imageUrl %>" alt="<%= pet.name %>">
                 </div>
                 <div class="pet-info">
                     <a href="/pets/pet-profile/<%= pet._id %>" class="pet-profile-link">
                         <h3><%= pet.name %></h3>
                     </a>
-                    <hr>
+                    
                     <p><%= pet.age %> years old</p>
                     <p><%= pet.breed %></p>
                         <a href="/pets/edit/<%= pet._id %>"><button type="submit">Edit Pet</button></a>
 
-                    <form action="/pet/delete/<%= pet._id %>" method="POST">
+                    <form action="pet/delete/<%= pet._id %>" method="POST">
                         <button type="submit">Delete Pet</button>
                     </form>
                 </div>
             </div>
+            <hr>
         <% }); %>
     </div>
-
+    <hr><hr><hr><hr>
     <h4>Users</h4>
     <div class="user-grid">
         <% users.forEach(user => { %>
             <div class="user-card">
                 <div class="user-info">
                     <h3><%= user.username %></h3>
-                    <hr>
+                    
                     <p><%= user.email %></p>
                     <form action="user/delete/<%= user._id %>" method="POST">
                         <button type="submit">Delete User</button>
                     </form>
                 </div>
             </div>
+            <hr>
         <% }); %>
     </div>
 
-    <a href="/pets"><button type="submit">Log Out</button></a>
+    <a href="/pets"><button type="submit">Home</button></a>
 
 </body>
 </html>

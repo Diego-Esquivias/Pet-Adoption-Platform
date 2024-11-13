@@ -20,11 +20,13 @@ const createPet = asyncWrapper(async (req, res) => {
         // If you are using Cloudinary for image uploads
         const cloudinaryResponse = await cloudinary.uploader.upload(req.file.path);
         const imageUrl =  req.file.path;
+
+        const capitalizedLocation = location.toUpperCase();
         const petData = {
             name,
             breed,
             age,
-            location,
+            location: capitalizedLocation,
             behavior,
             history,
             description,
