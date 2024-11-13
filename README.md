@@ -179,3 +179,41 @@ The following environment variables must be set in your `.env` file:
 ├── app.js               # Main application setup file
 ├── package.json         # Project dependencies and scripts
 └── README.md            # Project documentation
+
+
+#Versions
+v1.0.1: 20241031T031600 - Main branch merge/set up
+v1.0.2: 20241031T031600 - Working on login and gallery test pages
+v1.0.3: 20241101T105000 - Editing gallery test page
+v1.0.4: 20241101T144300 - Controller edits
+v1.0.5: 20241101T144400 - Changes to the gallery CSS
+v1.0.6: 20241102T110900 - Fixing routing & finishing up adding pet and updating gallery functionality
+v1.0.7: 20241103T034600 - Beginning Cloudinary integration
+v1.0.8: 20241103T085800 - Working on pet details page
+v1.0.9: 20241103T090500 - HTML to EJS conversion tests
+v1.0.10: 20241104T074500 - Finishing up pet details page
+v1.0.11: 20241104T093300 - Touching up pet details page
+v1.0.12: 20241105T125700 - Merging of main branch
+v1.0.13: 20241105T011000 - Updates all round
+v1.0.14: 20241105T021300 - Configuring routes properly
+v1.0.15: 20241105T030600 - Re-routing for easier functionality
+v1.0.16: 20241105T031400 - Button routing
+v1.0.17: 20241105T031800 - Finished most pages but adding responsiveness
+v1.0.18: 20241105TXXXXXX - Merging main branch
+v1.0.19: 20241108T121600 - Fixing dumb mistakes
+v1.0.20: 20241111T121100 - Mini fixes
+v1.0.21: 20241111T172200 - Edited CSS files for responsiveness
+v1.0.22: 20241111T172600 - Adding link tags to EJS files
+v1.0.23: 20241111T094400 - Added images to homepage
+v1.0.24: 20241112T122000 - Adding sessions
+v1.0.25: 20241112T123000 - Updating sessions
+v1.0.26: 20241112T124500 - Mini cookies fixes
+v1.0.27: 20241112T101400 - Finishing sessions
+v1.0.28: 20241112T141900 - Cloudinary uploads
+v1.0.29: 20241112T144000 - Beginning filters
+v1.0.30: 20241112T150200 - Editing and adding location information
+v1.0.31: 20241112T151600 - Finishing delete user and routing it
+v1.0.32: 20241112T152000 - Changing CSS pathways and links in EJS
+v1.0.33: 20241112T152000 - Merge of main branch
+v1.0.34: 20241112T103600 - Filter is working
+v1.0.35: 20241112T114200 - Final touches, fixes, and ReadMe
