@@ -16,7 +16,7 @@
         </nav>
     </header>
     <div class="container">
-            <form action="/api/filter" method="POST">
+            <form action="/pets/gallery" method="POST">
                 <label for="breed">Breed</label>
                 <select id="breed" name="breed">
                     <option value="">Select Breed</option>
@@ -50,6 +50,8 @@
                 </select>
             
                 <button type="submit" class="filter">Apply Filters</button>
+
+                <button type="submit" class="clear-filters" name="clearFilters" value="true">Clear Filters</button>
             </form>
         </div>
 
