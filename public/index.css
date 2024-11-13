@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'itim';
+    src: url(/Itim/Itim-Regular.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +14,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background-image: url(./images/Background.png);
+    font-family: 'itim';
+    background-image: url(./images/Background.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -136,7 +141,7 @@ input[type="file"] {
 
 @media (max-width: 600px) {
     body {
-        background-image: url(./images/SmallBackground.png);
+        background-image: url(./images/smallBackground.svg);
     }
 
     .login-container, .signup-container, .container {
