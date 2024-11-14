@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Pet</title>
+    <link rel="stylesheet" href="/admin.css">
 </head>
 <body>
     <h1>Edit Pet</h1>
-    <form action="/pets/edit/<%= pet._id %>" method="POST" enctype="multipart/form-data">
+    <form class="editPet" action="/pets/edit/<%= pet._id %>" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label>Name</label>
             <input type="text" name="name" value="<%= pet.name %>" required>
