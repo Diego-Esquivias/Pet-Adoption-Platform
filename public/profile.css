@@ -34,7 +34,7 @@ header .logo {
     font-weight: bold;
     width: 100px;
     height: 100px;
-    background-color: #e5e5e5b9;
+    background-color: #3e635c96;
     border-radius: 15px;
   }
   
@@ -205,10 +205,36 @@ textarea {
     margin-bottom: 10px;
 }
 
+footer {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  footer button {
+    background-color: #FF9F1C;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+  footer button:hover {
+    background-color: #ff8c00;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footer-bottom {
+    margin: 10px 0px;
+    font-size: 0.9em;
+  }
+
 /* Responsive Adjustments */
 @media (max-width: 650px) {
     body {
-        background-image: url(./images/SmallBackground.png);
+        background-image: url(./images/smallBackground.svg);
     }
     .container {
         width: 90%;
@@ -263,16 +289,21 @@ textarea {
 }
 
 @media (max-width: 600px) {
-    nav a, .sign-in {
-        font-size: 12px;
+    nav a {
+        font-size: 15px;
     }
     
     nav a {
-        margin: 0 5px;
+        margin: 0 10px;
     }
     
     header {
         padding: 5px;
+    }
+
+    header .logo {
+        width: 50px;
+        height: 50px;
     }
 
     .sign-in {

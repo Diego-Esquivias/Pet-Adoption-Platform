@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <link rel="stylesheet" href="/test.css">
+    <title>Meet Our Pets!</title>
+    <link rel="stylesheet" href="/gallery.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -17,6 +17,8 @@
         </nav>
     </header>
     <div class="container">
+        <h1>Find Your Companion Now!</h1>
+
             <form action="/pets/gallery" method="POST" class="search">
                 <select id="breed" name="breed">
                     <option value="">Breed</option>
@@ -73,6 +75,13 @@
         </div>
     </div>
 
-    
+    <footer>
+        <form method="POST" action="/pets/">
+            <button>Logout</button>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Furever Friends. All rights reserved.</p>
+            </div>
+        </form>
+    </footer>
 </body>
 </html>
